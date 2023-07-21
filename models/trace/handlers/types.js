@@ -1,0 +1,117 @@
+import * as Types from '../types/types.js';
+export const KNOWN_EVENTS = new Map([
+    /* Task/Other */
+    ["Program" /* Types.TraceEvents.KnownEventName.Program */, { category: "Other" /* EventCategory.Other */, label: 'Other' }],
+    ["RunTask" /* Types.TraceEvents.KnownEventName.RunTask */, { category: "Other" /* EventCategory.Other */, label: 'Run Task' }],
+    ["AsyncTask" /* Types.TraceEvents.KnownEventName.AsyncTask */, { category: "Other" /* EventCategory.Other */, label: 'Async Task' }],
+    /* Load */
+    ["XHRLoad" /* Types.TraceEvents.KnownEventName.XHRLoad */, { category: "Load" /* EventCategory.Load */, label: 'Load' }],
+    ["XHRReadyStateChange" /* Types.TraceEvents.KnownEventName.XHRReadyStateChange */, { category: "Load" /* EventCategory.Load */, label: 'ReadyStateChange' }],
+    /* Parse */
+    ["ParseHTML" /* Types.TraceEvents.KnownEventName.ParseHTML */, { category: "Parse" /* EventCategory.Parse */, label: 'Parse HTML' }],
+    ["ParseAuthorStyleSheet" /* Types.TraceEvents.KnownEventName.ParseCSS */, { category: "Parse" /* EventCategory.Parse */, label: 'Parse StyleSheet' }],
+    /* V8 */
+    ["V8.CompileScript" /* Types.TraceEvents.KnownEventName.CompileScript */, { category: "V8" /* EventCategory.V8 */, label: 'Compile Script' }],
+    ["V8.CompileCode" /* Types.TraceEvents.KnownEventName.CompileCode */, { category: "V8" /* EventCategory.V8 */, label: 'Compile Code' }],
+    ["V8.CompileModule" /* Types.TraceEvents.KnownEventName.CompileModule */, { category: "V8" /* EventCategory.V8 */, label: 'Compile Module' }],
+    ["V8.OptimizeCode" /* Types.TraceEvents.KnownEventName.Optimize */, { category: "V8" /* EventCategory.V8 */, label: 'Optimize' }],
+    [
+        "v8.wasm.streamFromResponseCallback" /* Types.TraceEvents.KnownEventName.WasmStreamFromResponseCallback */,
+        { category: "Js" /* EventCategory.Js */, label: 'Streaming Wasm Response' },
+    ],
+    ["v8.wasm.compiledModule" /* Types.TraceEvents.KnownEventName.WasmCompiledModule */, { category: "Js" /* EventCategory.Js */, label: 'Compiled Wasm Module' }],
+    ["v8.wasm.cachedModule" /* Types.TraceEvents.KnownEventName.WasmCachedModule */, { category: "Js" /* EventCategory.Js */, label: 'Cached Wasm Module' }],
+    ["v8.wasm.moduleCacheHit" /* Types.TraceEvents.KnownEventName.WasmModuleCacheHit */, { category: "Js" /* EventCategory.Js */, label: 'Wasm Module Cache Hit' }],
+    [
+        "v8.wasm.moduleCacheInvalid" /* Types.TraceEvents.KnownEventName.WasmModuleCacheInvalid */,
+        { category: "Js" /* EventCategory.Js */, label: 'Wasm Module Cache Invalid' },
+    ],
+    /* Js */
+    ["RunMicrotasks" /* Types.TraceEvents.KnownEventName.RunMicrotasks */, { category: "Js" /* EventCategory.Js */, label: 'Run Microtasks' }],
+    ["EvaluateScript" /* Types.TraceEvents.KnownEventName.EvaluateScript */, { category: "Js" /* EventCategory.Js */, label: 'Evaluate Script' }],
+    ["FunctionCall" /* Types.TraceEvents.KnownEventName.FunctionCall */, { category: "Js" /* EventCategory.Js */, label: 'Function Call' }],
+    ["EventDispatch" /* Types.TraceEvents.KnownEventName.EventDispatch */, { category: "Js" /* EventCategory.Js */, label: 'Event' }],
+    ["v8.evaluateModule" /* Types.TraceEvents.KnownEventName.EvaluateModule */, { category: "Js" /* EventCategory.Js */, label: 'Evaluate Module' }],
+    ["V8.Execute" /* Types.TraceEvents.KnownEventName.V8Execute */, { category: "Js" /* EventCategory.Js */, label: 'Execute' }],
+    [
+        "RequestMainThreadFrame" /* Types.TraceEvents.KnownEventName.RequestMainThreadFrame */,
+        { category: "Js" /* EventCategory.Js */, label: 'Request Main Thread Frame' },
+    ],
+    [
+        "RequestAnimationFrame" /* Types.TraceEvents.KnownEventName.RequestAnimationFrame */,
+        { category: "Js" /* EventCategory.Js */, label: 'Request Animation Frame' },
+    ],
+    [
+        "CancelAnimationFrame" /* Types.TraceEvents.KnownEventName.CancelAnimationFrame */,
+        { category: "Js" /* EventCategory.Js */, label: 'Cancel Animation Frame' },
+    ],
+    ["FireAnimationFrame" /* Types.TraceEvents.KnownEventName.FireAnimationFrame */, { category: "Js" /* EventCategory.Js */, label: 'Animation Frame' }],
+    ["RequestIdleCallback" /* Types.TraceEvents.KnownEventName.RequestIdleCallback */, { category: "Js" /* EventCategory.Js */, label: 'Request Idle Callback' }],
+    ["CancelIdleCallback" /* Types.TraceEvents.KnownEventName.CancelIdleCallback */, { category: "Js" /* EventCategory.Js */, label: 'Cancel Idle Callback' }],
+    ["FireIdleCallback" /* Types.TraceEvents.KnownEventName.FireIdleCallback */, { category: "Js" /* EventCategory.Js */, label: 'Idle Callback' }],
+    ["TimerInstall" /* Types.TraceEvents.KnownEventName.TimerInstall */, { category: "Js" /* EventCategory.Js */, label: 'Timer Installed' }],
+    ["TimerRemove" /* Types.TraceEvents.KnownEventName.TimerRemove */, { category: "Js" /* EventCategory.Js */, label: 'Timer Removed' }],
+    ["TimerFire" /* Types.TraceEvents.KnownEventName.TimerFire */, { category: "Js" /* EventCategory.Js */, label: 'Timer Fired' }],
+    ["WebSocketCreate" /* Types.TraceEvents.KnownEventName.WebSocketCreate */, { category: "Js" /* EventCategory.Js */, label: 'Create WebSocket' }],
+    [
+        "WebSocketSendHandshakeRequest" /* Types.TraceEvents.KnownEventName.WebSocketSendHandshake */,
+        { category: "Js" /* EventCategory.Js */, label: 'Send WebSocket Handshake' },
+    ],
+    [
+        "WebSocketReceiveHandshakeResponse" /* Types.TraceEvents.KnownEventName.WebSocketReceiveHandshake */,
+        { category: "Js" /* EventCategory.Js */, label: 'Receive WebSocket Handshake' },
+    ],
+    ["WebSocketDestroy" /* Types.TraceEvents.KnownEventName.WebSocketDestroy */, { category: "Js" /* EventCategory.Js */, label: 'Destroy WebSocket' }],
+    ["DoEncrypt" /* Types.TraceEvents.KnownEventName.CryptoDoEncrypt */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Encrypt' }],
+    ["DoEncryptReply" /* Types.TraceEvents.KnownEventName.CryptoDoEncryptReply */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Encrypt Reply' }],
+    ["DoDecrypt" /* Types.TraceEvents.KnownEventName.CryptoDoDecrypt */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Decrypt' }],
+    ["DoDecryptReply" /* Types.TraceEvents.KnownEventName.CryptoDoDecryptReply */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Decrypt Reply' }],
+    ["DoDigest" /* Types.TraceEvents.KnownEventName.CryptoDoDigest */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Digest' }],
+    ["DoDigestReply" /* Types.TraceEvents.KnownEventName.CryptoDoDigestReply */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Digest Reply' }],
+    ["DoSign" /* Types.TraceEvents.KnownEventName.CryptoDoSign */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Sign' }],
+    ["DoSignReply" /* Types.TraceEvents.KnownEventName.CryptoDoSignReply */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Sign Reply' }],
+    ["DoVerify" /* Types.TraceEvents.KnownEventName.CryptoDoVerify */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Verify' }],
+    ["DoVerifyReply" /* Types.TraceEvents.KnownEventName.CryptoDoVerifyReply */, { category: "Js" /* EventCategory.Js */, label: 'Crypto Verify Reply' }],
+    /* Gc */
+    ["GCEvent" /* Types.TraceEvents.KnownEventName.GC */, { category: "Gc" /* EventCategory.Gc */, label: 'GC' }],
+    ["BlinkGC.AtomicPhase" /* Types.TraceEvents.KnownEventName.DOMGC */, { category: "Gc" /* EventCategory.Gc */, label: 'DOM GC' }],
+    ["V8.GCIncrementalMarking" /* Types.TraceEvents.KnownEventName.IncrementalGCMarking */, { category: "Gc" /* EventCategory.Gc */, label: 'Incremental GC' }],
+    ["MajorGC" /* Types.TraceEvents.KnownEventName.MajorGC */, { category: "Gc" /* EventCategory.Gc */, label: 'Major GC' }],
+    ["MinorGC" /* Types.TraceEvents.KnownEventName.MinorGC */, { category: "Gc" /* EventCategory.Gc */, label: 'Minor GC' }],
+    /* Layout (a.k.a "Rendering") */
+    [
+        "ScheduleStyleRecalculation" /* Types.TraceEvents.KnownEventName.ScheduleStyleRecalculation */,
+        { category: "Layout" /* EventCategory.Layout */, label: 'Schedule Recalculate Style' },
+    ],
+    ["RecalculateStyles" /* Types.TraceEvents.KnownEventName.RecalculateStyles */, { category: "Layout" /* EventCategory.Layout */, label: 'Recalculate Style' }],
+    ["Layout" /* Types.TraceEvents.KnownEventName.Layout */, { category: "Layout" /* EventCategory.Layout */, label: 'Layout' }],
+    ["UpdateLayoutTree" /* Types.TraceEvents.KnownEventName.UpdateLayoutTree */, { category: "Layout" /* EventCategory.Layout */, label: 'Recalculate Style' }],
+    ["InvalidateLayout" /* Types.TraceEvents.KnownEventName.InvalidateLayout */, { category: "Layout" /* EventCategory.Layout */, label: 'Invalidate Layout' }],
+    [
+        "LayoutInvalidationTracking" /* Types.TraceEvents.KnownEventName.LayoutInvalidationTracking */,
+        { category: "Layout" /* EventCategory.Layout */, label: 'Layout Invalidation' },
+    ],
+    [
+        "ComputeIntersections" /* Types.TraceEvents.KnownEventName.ComputeIntersections */,
+        { category: "Paint" /* EventCategory.Paint */, label: 'Compute Intersections' },
+    ],
+    ["HitTest" /* Types.TraceEvents.KnownEventName.HitTest */, { category: "Layout" /* EventCategory.Layout */, label: 'Hit Test' }],
+    ["PrePaint" /* Types.TraceEvents.KnownEventName.PrePaint */, { category: "Layout" /* EventCategory.Layout */, label: 'Pre-Paint' }],
+    /* Paint */
+    ["ScrollLayer" /* Types.TraceEvents.KnownEventName.ScrollLayer */, { category: "Paint" /* EventCategory.Paint */, label: 'Scroll' }],
+    ["UpdateLayer" /* Types.TraceEvents.KnownEventName.UpdateLayer */, { category: "Paint" /* EventCategory.Paint */, label: 'Update Layer' }],
+    ["PaintSetup" /* Types.TraceEvents.KnownEventName.PaintSetup */, { category: "Paint" /* EventCategory.Paint */, label: 'Paint Setup' }],
+    ["Paint" /* Types.TraceEvents.KnownEventName.Paint */, { category: "Paint" /* EventCategory.Paint */, label: 'Paint' }],
+    ["PaintImage" /* Types.TraceEvents.KnownEventName.PaintImage */, { category: "Paint" /* EventCategory.Paint */, label: 'Paint Image' }],
+    ["Commit" /* Types.TraceEvents.KnownEventName.Commit */, { category: "Paint" /* EventCategory.Paint */, label: 'Commit' }],
+    ["CompositeLayers" /* Types.TraceEvents.KnownEventName.CompositeLayers */, { category: "Paint" /* EventCategory.Paint */, label: 'Composite Layers' }],
+    ["RasterTask" /* Types.TraceEvents.KnownEventName.RasterTask */, { category: "Paint" /* EventCategory.Paint */, label: 'Raster' }],
+    ["ImageDecodeTask" /* Types.TraceEvents.KnownEventName.ImageDecodeTask */, { category: "Paint" /* EventCategory.Paint */, label: 'Decode Image Task' }],
+    ["ImageUploadTask" /* Types.TraceEvents.KnownEventName.ImageUploadTask */, { category: "Paint" /* EventCategory.Paint */, label: 'Upload Image Task' }],
+    ["Decode Image" /* Types.TraceEvents.KnownEventName.DecodeImage */, { category: "Paint" /* EventCategory.Paint */, label: 'Decode Image' }],
+    ["Resize Image" /* Types.TraceEvents.KnownEventName.ResizeImage */, { category: "Paint" /* EventCategory.Paint */, label: 'Resize Image' }],
+    ["Draw LazyPixelRef" /* Types.TraceEvents.KnownEventName.DrawLazyPixelRef */, { category: "Paint" /* EventCategory.Paint */, label: 'Draw LazyPixelRef' }],
+    ["Decode LazyPixelRef" /* Types.TraceEvents.KnownEventName.DecodeLazyPixelRef */, { category: "Paint" /* EventCategory.Paint */, label: 'Decode LazyPixelRef' }],
+    ["GPUTask" /* Types.TraceEvents.KnownEventName.GPUTask */, { category: "Paint" /* EventCategory.Paint */, label: 'GPU Task' }],
+]);
+//# sourceMappingURL=types.js.map

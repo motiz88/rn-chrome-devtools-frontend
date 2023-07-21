@@ -1,0 +1,9 @@
+import '../shell/shell.js';
+import '../../panels/network/network-meta.js';
+import '../../panels/emulation/emulation-meta.js';
+import '../../panels/sensors/sensors-meta.js';
+import '../../panels/developer_resources/developer_resources-meta.js';
+import '../inspector_main/inspector_main-meta.js';
+import '../../panels/issues/issues-meta.js';
+import '../../panels/mobile_throttling/mobile_throttling-meta.js';
+import '../../panels/timeline/timeline-meta.js';

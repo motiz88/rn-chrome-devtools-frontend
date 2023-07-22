@@ -19,11 +19,11 @@ jobs:
       - uses: ./.github/actions/download-artifact
         with:
           name: dist-front_end
-          path: $RUNNER_TEMP/dist-front_end
+          path: ${{ env.RUNNER_TEMP }}/dist-front_end
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v2.0
         with:
-          publish-dir: '$RUNNER_TEMP/dist-front_end'
+          publish-dir: ${{ env.RUNNER_TEMP }}/dist-front_end
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"

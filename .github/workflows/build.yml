@@ -18,9 +18,9 @@ jobs:
           !src
           !!src/out
           !!src/.cipd
-        key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
+        key: ${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
         restore-keys: |
-          ${{ runner.os }}-gclient-workspace-
+          ${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}-gclient-workspace-
     - name: setup-depot-tools
       uses: newkdev/setup-depot-tools@v1.0.1
     - name: Sync gclient workspace
@@ -44,5 +44,5 @@ jobs:
           !src
           !!src/out
           !!src/.cipd
-        key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
+        key: ${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
   

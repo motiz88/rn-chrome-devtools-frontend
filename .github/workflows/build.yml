@@ -5,12 +5,6 @@ on:
 
 jobs:
   build:
-    env:
-      WORKSPACE_CACHE_PATHS: |
-        .
-        !src
-        !!src/out
-        !!src/.cipd
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,7 +13,11 @@ jobs:
     - name: Restore gclient workspace cache
       uses: actions/cache/restore@v3
       with:
-        path: ${{ env.WORKSPACE_CACHE_PATHS }}
+        path: |
+          .
+          !src
+          !!src/out
+          !!src/.cipd
         key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
         restore-keys: |
           ${{ runner.os }}-gclient-workspace-
@@ -41,6 +39,10 @@ jobs:
     - name: Save gclient workspace cache
       uses: actions/cache/save@v3
       with:
-        path: ${{ env.WORKSPACE_CACHE_PATHS }}
+        path: |
+          .
+          !src
+          !!src/out
+          !!src/.cipd
         key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
   

@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/download-artifact@v3
+      - uses: ./.github/actions/download-artifact
         with:
           name: dist-front_end
           path: $RUNNER_TEMP/dist-front_end

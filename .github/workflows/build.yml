@@ -34,7 +34,7 @@ jobs:
         cd src
         gn gen out/Default
         autoninja -C out/Default
-    - uses: actions/upload-artifact@v3
+    - uses: ./src/.github/actions/upload-artifact
       with:
         name: dist-front_end
         path: src/out/Default/gen/front_end

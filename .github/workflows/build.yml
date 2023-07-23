@@ -5,12 +5,6 @@ on:
 
 jobs:
   build:
-    env:
-      WORKSPACE_CACHE_PATHS: |
-        .
-        !src
-        !!src/out
-        !!src/.cipd
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,10 +13,14 @@ jobs:
     - name: Restore gclient workspace cache
       uses: actions/cache/restore@v3
       with:
-        path: ${{ env.WORKSPACE_CACHE_PATHS }}
-        key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
+        path: |
+          .
+          !src
+          !!src/out
+          !!src/.cipd
+        key: ${{ runner.os }}-${{ hashFiles('src/.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
         restore-keys: |
-          ${{ runner.os }}-gclient-workspace-
+          ${{ runner.os }}-${{ hashFiles('src/.github/workflows/*') }}-gclient-workspace-
     - name: setup-depot-tools
       uses: newkdev/setup-depot-tools@v1.0.1
     - name: Sync gclient workspace
@@ -41,6 +39,10 @@ jobs:
     - name: Save gclient workspace cache
       uses: actions/cache/save@v3
       with:
-        path: ${{ env.WORKSPACE_CACHE_PATHS }}
-        key: ${{ runner.os }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
+        path: |
+          .
+          !src
+          !!src/out
+          !!src/.cipd
+        key: ${{ runner.os }}-${{ hashFiles('src/.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
   

@@ -44,5 +44,5 @@ jobs:
           !src
           !!src/out
           !!src/.cipd
-        key: ${{ runner.os }}-${{ hashFiles('.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
+        key: ${{ runner.os }}-${{ hashFiles('src/.github/workflows/*') }}-gclient-workspace-${{ hashFiles('src/DEPS') }}
   

@@ -10,7 +10,7 @@ import * as LitHtml from '../../ui/lit-html/lit-html.js';
 
 const UIStrings = {
   /** @description The name of the debugging product */
-  debuggerBrandName: 'Chrome DevTools for React Native',
+  debuggerBrandName: 'React Native JS Inspector',
   /** @description Welcome text */
   welcomeMessage: 'Welcome to debugging in React Native',
   /** @description "Debugging docs" link */

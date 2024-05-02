@@ -53886,7 +53886,9 @@ function initialize(contentWindow, options) {
   const {
     bridge,
     store,
-    theme = 'light'
+    theme = 'light',
+    viewElementSourceFunction,
+    canViewElementSourceFunction,
   } = options;
   const root = (0,client/* createRoot */.s)(contentWindow);
   root.render( /*#__PURE__*/react.createElement(DevTools_DevTools, {
@@ -53894,7 +53896,9 @@ function initialize(contentWindow, options) {
     browserTheme: theme,
     store: store,
     showTabBar: true,
-    warnIfLegacyBackendDetected: true
+    warnIfLegacyBackendDetected: true,
+    viewElementSourceFunction,
+    canViewElementSourceFunction,
   }));
 }
 })();

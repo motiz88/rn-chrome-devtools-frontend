@@ -5,5 +5,7 @@
 import("../visibility.gni")
 
 declare_args() {
-  devtools_models_visibility = devtools_visibility
+  devtools_models_visibility = devtools_visibility + [
+    "//front_end/panels/react_devtools/*",
+  ]
 }

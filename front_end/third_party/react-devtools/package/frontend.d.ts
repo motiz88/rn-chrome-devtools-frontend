@@ -20,6 +20,8 @@ export type InitializationOptions = {
   bridge: Bridge,
   store: Store,
   theme?: BrowserTheme,
+  viewElementSourceFunction?: (source: {sourceURL: string, line: number, column: number}, symbolicatedSource?: {sourceURL: string, line: number, column: number}) => void,
+  canViewElementSourceFunction?: () => boolean,
 };
 export function initialize(node: Element | Document, options: InitializationOptions): void;
 

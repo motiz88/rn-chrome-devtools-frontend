@@ -28,6 +28,8 @@ devtools_module("react_devtools") {
 
   deps = [
     "../../core/sdk:bundle",
+    "../../models/bindings:bundle",
+    "../../models/logs:bundle",
     "../../models/react_native:bundle",
     "../../third_party/react-devtools:bundle",
     "../../ui/legacy:bundle",
